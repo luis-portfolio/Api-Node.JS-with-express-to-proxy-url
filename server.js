@@ -1,8 +1,7 @@
-const axios = require("axios").create({
-  httpsAgent: new require("https").Agent({ rejectUnauthorized: false }),
-});
+const httpsAgent = new require("https").Agent({ rejectUnauthorized: false });
+const axios = require("axios").create({ httpsAgent });
 const express = require("express");
-var cors = require('cors')
+var cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -13,7 +12,7 @@ app.get("/", async (req, res) => {
     Api: "1.0",
     Engineer: "Luis Nt",
     Now: new Date(),
-    QueryUses: "/proxy?url=https://e-svt.herokuapp.com"      
+    QueryUses: "/proxy?url=https://e-svt.herokuapp.com",
   });
 });
 
