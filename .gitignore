@@ -7,4 +7,3 @@ tmp
 .env
 
 yarn.lock
-package-lock.json
