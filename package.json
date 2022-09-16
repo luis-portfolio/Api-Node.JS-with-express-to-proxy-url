@@ -1,5 +1,5 @@
 {
-  "name": "proxy-url",
+  "name": "proxy-urls",
   "description": "By pass url get ssl",
   "version": "1.0.0",
   "main": "server.js",
