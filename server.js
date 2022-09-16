@@ -22,20 +22,13 @@ app.get("/", async (req, res) => {
 app.get("/proxy", async (req, res) => {
   const { headers: head, query, body } = req;
   const url = head["url"] || query["url"] || body["url"];
-
-  const { status, statusText, headers, data } = await axios.get(url);
-  res.json({
-    head,
-    status,
-    statusText,
-    data,
-  });
+  const { status, statusText, data } = await axios.get(url);
+  res.json({status, statusText, data })
 });
-
 
 const PORT = process.env.PORT || "8080";
 
 app.listen(PORT, () => {
-  console.log('App proxy listening on port ', PORT);
+  console.log('App proxy listening on port', PORT);
 });
 
