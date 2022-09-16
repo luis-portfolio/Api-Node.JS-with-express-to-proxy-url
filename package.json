@@ -2,7 +2,7 @@
   "name": "proxy-urls",
   "author": "Luis Nt",
   "description": "By pass url get ssl",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "main": "server.js",
   "engines": {
     "node": "16.x",

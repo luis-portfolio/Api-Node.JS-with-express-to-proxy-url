@@ -6,15 +6,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const SAMPLE_URL = "https://swapi.dev/api/people/1"
+
 app.get("/", async (req, res) => {
   res.json({
-    Api: "1.0",
+    Api: "1.0.7",
     Engineer: "Luis Nt",
     Now: new Date(),
     uses: {
-      head: "url: https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",
-      query: "/proxy?url=https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",
-      body: " { url : https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena } ",
+      head: `url: ${SAMPLE_URL}`,
+      query: `/proxy?url=${SAMPLE_URL}`,
+      body: ` { url : ${SAMPLE_URL} } `,
     },
   });
 });
