@@ -5,7 +5,6 @@ var cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
-const port = 80;
 
 app.get("/", async (req, res) => {
   res.json({
@@ -23,6 +22,8 @@ app.get("/proxy", async (req, res) => {
   res.json({ headers, status, statusText, data });
 });
 
-app.listen(80, () => {
-  console.log(`App proxy listening on port 80`);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`App proxy listening on port ${port}`);
 });
