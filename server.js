@@ -11,11 +11,7 @@ app.get("/", async (req, res) => {
     Api: "1.0",
     Engineer: "Luis Nt",
     Now: new Date(),
-    use: {
-      // head: "url: https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena",
-      query: "/proxy?url=https://e-svt.herokuapp.com",
-      // body: " { url : https://e-svt.herokuapp.com } ",
-    },
+    QueryUses: "/proxy?url=https://e-svt.herokuapp.com"      
   });
 });
 
