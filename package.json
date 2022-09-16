@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "ENV_SILENT=true node server.js"
+    "start": "ENV_SILENT=true NODE_VERBOSE=true node server.js"
   },
   "keywords": [],
   "author": "",
