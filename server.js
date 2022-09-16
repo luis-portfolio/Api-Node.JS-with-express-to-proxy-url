@@ -2,8 +2,10 @@ const axios = require("axios").create({
   httpsAgent: new require("https").Agent({ rejectUnauthorized: false }),
 });
 const express = require("express");
+var cors = require('cors')
 const app = express();
 app.use(express.json());
+app.use(cors());
 const port = 80;
 
 app.get("/", async (req, res) => {
