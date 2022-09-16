@@ -20,18 +20,12 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/proxy", async (req, res) => {
-  const { headers: head, query, body } = req;
-  const url = head["url"] || query["url"] || body["url"];
-
+  const { query } = req;
+  const url = query["url"];
   const { status, statusText, headers, data } = await axios.get(url);
-  res.json({
-    head,
-    status,
-    statusText,
-    data,
-  });
+  res.json({ headers, status, statusText, data });
 });
 
-app.listen(port, () => {
-  console.log(`App proxy listening on port ${port}`);
+app.listen(80, () => {
+  console.log(`App proxy listening on port 80`);
 });
