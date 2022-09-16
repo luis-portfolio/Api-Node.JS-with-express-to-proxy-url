@@ -4,7 +4,7 @@ const axios = require("axios").create({
 const express = require("express");
 const app = express();
 app.use(express.json());
-const port = 3000;
+const port = 80;
 
 app.get("/", async (req, res) => {
   res.json({
