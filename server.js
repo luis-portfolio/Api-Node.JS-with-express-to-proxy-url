@@ -22,8 +22,8 @@ app.get("/proxy", async (req, res) => {
   res.json({ headers, status, statusText, data });
 });
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || "8080";
 
-app.listen(port, () => {
-  console.log(`App proxy listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log('App proxy listening on port ', PORT);
 });
