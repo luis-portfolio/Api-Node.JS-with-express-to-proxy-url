@@ -1,12 +1,13 @@
 const httpsAgent = new require("https").Agent({ rejectUnauthorized: false });
-const axios = require("axios").create({ httpsAgent });
+const con = { httpsAgent };
+const axios = require("axios").create(con);
 const express = require("express");
 var cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const SAMPLE_URL = "https://swapi.dev/api/people/1"
+const SAMPLE_URL = "https://swapi.dev/api/people/1";
 
 app.get("/", async (req, res) => {
   res.json({
@@ -23,14 +24,24 @@ app.get("/", async (req, res) => {
 
 app.get("/proxy", async (req, res) => {
   const { headers: head, query, body } = req;
-  const url = head["url"] || query["url"] || body["url"];
-  const { status, statusText, data } = await axios.get(url);
-  res.json({status, statusText, data })
+  const url = head["url"] || query["url"] || body["url"] || "https://swapi.dev/api/people/1";
+
+  try {
+  const response = await axios.get(url);
+    const { status, statusText, data } = response;
+    res.json({ status, statusText, data });
+  } catch (error) {
+    const response = error.toJSON()
+    const status = response["status"];
+    const statusText = response["message"];
+    const data = response["data"];
+    console.error({ response });
+    res.json({ status, statusText, data });
+  }
 });
 
 const PORT = process.env.PORT || "8080";
 
 app.listen(PORT, () => {
-  console.log('App proxy listening on port', PORT);
+  console.log("App proxy listening on port", PORT);
 });
-
